@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "header": "testcafe chrome Header/header.js --speed 0.5"
+  },
+
+  "dependencies": {
+    "testcafe": "^1.18.6"
+  }
+}
