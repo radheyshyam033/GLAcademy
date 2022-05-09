@@ -25,8 +25,8 @@ test('Search bar', async t =>{
     const searchBar=Selector('input[name="search_term_string"]')
     const searchOption=Selector('#search-options')
     const popularCourses=Selector('#popular_courses')
-    const pgCourse=Selector('#pg-course-options')
-    const courseOption=Selector('course-options')
+    const pgCourse=Selector('#js-pg-course-category-heading')
+    const courseOption=Selector('#js-course-category-heading')
 
     await t.expect(searchBar.exists).ok()
     await t.expect(searchBar.visible).ok()
@@ -38,12 +38,17 @@ test('Search bar', async t =>{
     await t.expect(popularCourses.exists).ok()
     await t.expect(popularCourses.visible).ok()
 
+    .click(searchBar)
+    .typeText(searchBar,'Degree programs')
     await t.expect(pgCourse.exists).ok()
     await t.expect(pgCourse.visible).ok()
 
-    // await t.expect(courseOption.visible).ok()
-    // await t.expect(courseOption.exists).ok()
+    .pressKey('ctrl+a delete')
+    .typeText(searchBar,'Course')
+    await t.expect(courseOption.exists).ok()
+    await t.expect(courseOption.visible).ok()
 
+    .pressKey('ctrl+a delete')
     const mySqlBasic=Selector('#popular_courses > li:nth-child(4) > a')
     await t.click(mySqlBasic)
     const getWindowLocation = ClientFunction(() => window.location);
@@ -67,21 +72,20 @@ test('Degree & certificate programs',async t=>{
     await t.expect(await location.href).eql(degreeAndCertificateUrl);
 })
 
-test.only('GL login automation', async t =>{
+test('GL login automation', async t =>{
     const login=Selector('#header-login-modal-link')
     const loginPopup=Selector('#loginModel>div')
     const emailId=Selector('#email_id')
     const password=Selector('#password')
     const signInButton=Selector('#recaptcha_log_in_button')
     const forgetPass=Selector('a.login-forgetpass')
-    // const forgetPassPopup=Selector('forgot-password')
     const forgetPassPopup=Selector('#myTabContent')
     const signup=Selector('#forgot_password_div .signup-btn')
     const signupPopup=Selector('#corp-login-modal #signup-front-sec')
 
     await t.expect(login.exists).ok()
     await t.expect(login.visible).ok()
-
+    
     .click(login)
     await t.expect(loginPopup.exists).ok()
     await t.expect(loginPopup.visible).ok()
@@ -127,7 +131,6 @@ test('GL Sign Up automation', async t =>{
 
     await t.expect(email.exists).ok()
     await t.expect(email.visible).ok()
-    // await t.expect(email.getAttribute('type')).eql('email')
 
     await t.expect(continueButton.exists).ok()
     await t.expect(continueButton.visible).ok()

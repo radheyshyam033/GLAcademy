@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "header": "testcafe chrome Header/header.js --speed 0.5"
+    "header": "testcafe chrome Header/header.js",
+    "careerPath":"testcafe chrome careerPath/careerPath.js"
   },
 
   "dependencies": {
