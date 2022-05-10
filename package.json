@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "header": "testcafe chrome Header/header.js",
-    "careerPath":"testcafe chrome careerPath/careerPath.js"
+    "glAcademy": "testcafe chrome glAcademy/index.js"
   },
 
   "dependencies": {
