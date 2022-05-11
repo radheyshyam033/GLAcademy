@@ -1,4 +1,5 @@
 export async function seeAllCareerPathButton(totalCardsSelector, totalCards, totalCourses, t) {
+    
     const seeAllCareerPath = totalCardsSelector
         .child("div:nth-child(5)")
         .child("a")

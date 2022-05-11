@@ -22,17 +22,22 @@ export async function searchBar(t) {
     await t.expect(pgCourse.exists).ok();
     await t.expect(pgCourse.visible).ok()
 
-        .pressKey('ctrl+a delete')
-        .typeText(searchBarSelector, 'Course');
+    .pressKey('ctrl+a delete')
+    .typeText(searchBarSelector, 'Course');
     await t.expect(courseOption.exists).ok();
     await t.expect(courseOption.visible).ok()
 
-        .pressKey('ctrl+a delete');
+    .pressKey('ctrl+a delete');
     const mySqlBasic = popularCourses.child('li:nth-child(4)').child('a');
-    await t.click(mySqlBasic);
+
+    await t.click(mySqlBasic)
+    .wait(5000)
+
     const getWindowLocation = ClientFunction(() => window.location);
     const location = (await getWindowLocation());
     const url = await mySqlBasic.getAttribute('href');
     await t.expect(location.href).eql(url)
-        .pressKey('alt+left');
+
+    const logo = Selector('img.logo')
+    await t.click(logo)
 }

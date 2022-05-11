@@ -10,6 +10,7 @@ export async function login(t) {
     const forgetPassPopup = Selector('#myTabContent');
     const signup = Selector('#forgot_password_div .signup-btn');
     const signupPopup = Selector('#corp-login-modal #signup-front-sec');
+    const closePopup=Selector("[data-dismiss-target='corp-login-modal'] > [alt='close-button']")
 
     await t.expect(login.exists).ok();
     await t.expect(login.visible).ok()
@@ -38,5 +39,6 @@ export async function login(t) {
 
         .click(signup);
     await t.expect(signupPopup.exists).ok();
-    await t.expect(signupPopup.visible).ok();
+    await t.expect(signupPopup.visible).ok()
+    .click(closePopup)
 }

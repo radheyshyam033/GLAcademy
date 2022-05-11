@@ -8,10 +8,11 @@ import { signup } from "./signup";
 export default async function header(t) {
         await navbar(t);
         await logo(t);
-        await searchBar(t);
         await degreeAndCertificate(t);
-        await login(t);
+        await login(t)
         await signup(t);
+        await t.wait(5000)
+        await searchBar(t);
     
 }
 
